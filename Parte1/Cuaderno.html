@@ -1,0 +1,1428 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Para mi querida Anahí</title>
+    <style>
+        /* CSS COMPLETO CORREGIDO PARA MÓVIL Y PC */
+
+        @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Dancing+Script:wght@400;700&family=Great+Vibes&family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 25%, #fecfef 75%, #ffc3a0 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Animated background elements */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                radial-gradient(circle at 20% 80%, rgba(255, 182, 193, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 192, 203, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(255, 218, 185, 0.1) 0%, transparent 50%);
+            animation: float 20s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+
+            33% {
+                transform: translateY(-20px) rotate(1deg);
+            }
+
+            66% {
+                transform: translateY(-10px) rotate(-1deg);
+            }
+        }
+
+        /* Floating hearts animation */
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .heart-particle {
+            position: absolute;
+            color: rgba(255, 182, 193, 0.6);
+            animation: floatUp 15s linear infinite;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh) scale(0);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            90% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-100px) scale(0);
+                opacity: 0;
+            }
+        }
+
+        /* Book container */
+        .book-container {
+            perspective: 1500px;
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .book {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .book.opening {
+            transform: rotateY(-15deg) scale(0.95);
+        }
+
+        .book.opened {
+            transform: rotateY(0deg) scale(1);
+        }
+
+        .cover,
+        .page {
+            position: absolute;
+            backface-visibility: hidden;
+        }
+
+        /* Enhanced Cover Design */
+        .cover {
+            width: 90vw;
+            max-width: 400px;
+            height: 70vh;
+            max-height: 600px;
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 25%, #ff9ff3 75%, #f368e0 100%);
+            border: 6px solid #fff;
+            border-radius: 20px;
+            box-shadow:
+                0 20px 40px rgba(255, 107, 107, 0.3),
+                0 0 0 3px rgba(255, 255, 255, 0.8),
+                inset 0 1px 0 rgba(255, 255, 255, 0.4);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            overflow: hidden;
+        }
+
+        /* Cover decorative elements */
+        .cover::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            animation: shine 4s ease-in-out infinite;
+        }
+
+        @keyframes shine {
+            0% {
+                transform: translateX(-100%) translateY(-100%) rotate(45deg);
+            }
+
+            50% {
+                transform: translateX(100%) translateY(100%) rotate(45deg);
+            }
+
+            100% {
+                transform: translateX(200%) translateY(200%) rotate(45deg);
+            }
+        }
+
+        .cover::after {
+            content: '✨💖✨';
+            position: absolute;
+            top: 15px;
+            left: 0;
+            right: 0;
+            font-size: 1.2rem;
+            animation: sparkle 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes sparkle {
+            0% {
+                opacity: 0.7;
+                transform: scale(1);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1.1);
+            }
+        }
+
+        .title-main {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(2.2rem, 7vw, 3.5rem);
+            font-weight: 400;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 255, 255, 0.5);
+            margin-bottom: 20px;
+            z-index: 2;
+            position: relative;
+            animation: titleGlow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes titleGlow {
+            0% {
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 255, 255, 0.5);
+            }
+
+            100% {
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3), 0 0 30px rgba(255, 255, 255, 0.8);
+            }
+        }
+
+        .subtitle {
+            font-size: clamp(0.9rem, 3vw, 1.1rem);
+            color: rgba(255, 255, 255, 0.95);
+            font-style: italic;
+            margin-bottom: 40px;
+            padding: 0 20px;
+            font-weight: 300;
+            z-index: 2;
+            position: relative;
+        }
+
+        .heart {
+            font-size: 3rem;
+            margin-bottom: 40px;
+            animation: heartBeat 1.5s ease-in-out infinite;
+            z-index: 2;
+            position: relative;
+        }
+
+        @keyframes heartBeat {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.15);
+            }
+        }
+
+        /* Enhanced button */
+        .open-button {
+            background: linear-gradient(45deg, #fff 0%, #ffeaa7 100%);
+            color: #ff6b6b;
+            padding: 16px 32px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.3), 0 0 0 2px rgba(255, 255, 255, 0.8);
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            animation: buttonPulse 2s ease-in-out infinite;
+            min-height: 48px;
+            min-width: 120px;
+            z-index: 3;
+        }
+
+        @keyframes buttonPulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+                box-shadow: 0 8px 25px rgba(255, 107, 107, 0.3), 0 0 0 2px rgba(255, 255, 255, 0.8);
+            }
+
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 12px 35px rgba(255, 107, 107, 0.4), 0 0 0 3px rgba(255, 255, 255, 1);
+            }
+        }
+
+        .open-button:active {
+            transform: scale(0.95);
+        }
+
+        .author {
+            position: absolute;
+            bottom: 25px;
+            right: 25px;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.9rem;
+            font-style: italic;
+            font-weight: 400;
+            z-index: 2;
+        }
+
+        /* PÁGINAS - OPTIMIZADAS PARA MÓVIL Y PC */
+        .page {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #ffc3a0 100%);
+            display: none;
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            top: 0;
+            left: 0;
+            padding: 0;
+        }
+
+        .page.active {
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* CONTENEDOR NOTEBOOK - AJUSTADO PARA MÓVIL Y PC */
+        .notebook-sheet {
+            width: 100%;
+            height: 100%;
+            background: #ffffff;
+            position: relative;
+            padding: 80px 25px 120px 30px;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        /* Spiral holes */
+        .spiral-holes {
+            position: absolute;
+            left: 8px;
+            top: 60px;
+            bottom: 100px;
+            width: 20px;
+            z-index: 1;
+        }
+
+        .spiral-hole {
+            width: 16px;
+            height: 16px;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border: 2px solid #dee2e6;
+            border-radius: 50%;
+            margin-bottom: 35px;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        /* TÍTULO - CENTRADO PARA MÓVIL Y PC */
+        .page-title {
+            font-family: 'Crimson Text', serif;
+            font-size: clamp(1.5rem, 5vw, 2.2rem);
+            color: #c0392b;
+            text-align: center;
+            margin: 0 25px 25px 25px;
+            border-bottom: 3px solid #c0392b;
+            padding-bottom: 15px;
+            font-weight: 600;
+            position: relative;
+            z-index: 10;
+        }
+
+        .page-title::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(45deg, #ff6b6b, #ffa502);
+            border-radius: 2px;
+        }
+
+        /* IMAGEN - ALINEADA CON HIGHLIGHT-BOX */
+        .page-image {
+            width: 100%;
+            max-width: 250px;
+            margin: 25px 30px 25px 55px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow:
+                0 10px 25px rgba(0, 0, 0, 0.15),
+                0 0 0 3px rgba(255, 255, 255, 1),
+                0 0 0 6px #ff6b6b;
+            position: relative;
+            z-index: 10;
+        }
+
+        .page-image img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* CAJA DESTACADA - REFERENCIA DE ALINEACIÓN */
+        .highlight-box {
+            background: linear-gradient(135deg, #ffe0e6 0%, #ffd3e1 100%);
+            padding: 18px 20px;
+            border-radius: 25px;
+            margin: 25px 30px 25px 55px;
+            text-align: center;
+            box-shadow:
+                0 6px 15px rgba(255, 107, 107, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            max-width: 320px;
+            border: 2px solid rgba(255, 107, 107, 0.3);
+            position: relative;
+            z-index: 10;
+        }
+
+        .highlight-text {
+            color: #c0392b;
+            font-weight: 600;
+            font-size: clamp(0.9rem, 3vw, 1.05rem);
+        }
+
+        /* CONTENIDO DE PÁGINA */
+        .page-content {
+            font-size: clamp(0.9rem, 3.2vw, 1.05rem);
+            line-height: 1.7;
+            color: #2c3e50;
+            text-align: justify;
+            margin-top: 25px;
+            margin-left: 20px;
+            font-family: 'Crimson Text', serif;
+            text-indent: 20px;
+            padding-right: 8px;
+            hyphens: auto;
+            word-wrap: break-word;
+            position: relative;
+            z-index: 5;
+        }
+
+        /* Fixed page indicator */
+        .page-indicator {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #fff, #f8f9fa);
+            color: #c0392b;
+            padding: 10px 18px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), 0 0 0 2px rgba(255, 107, 107, 0.3);
+            z-index: 100;
+        }
+
+        /* Fixed navigation */
+        .page-navigation {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 15px;
+            z-index: 100;
+        }
+
+        .nav-button {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 14px 20px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+            min-height: 48px;
+            min-width: 100px;
+        }
+
+        .nav-button:active {
+            transform: translateY(2px);
+        }
+
+        .nav-button:disabled {
+            background: linear-gradient(45deg, #bdc3c7, #95a5a6);
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* BOTÓN SIGUIENTE PARTE ESPECIAL PARA PÁGINA 12 */
+        .next-part-button {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 16px 30px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 700;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.5);
+            min-height: 56px;
+            min-width: 180px;
+            animation: nextPartPulse 2s ease-in-out infinite;
+            border: 2px solid rgba(255, 255, 255, 0.8);
+        }
+
+        @keyframes nextPartPulse {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 8px 25px rgba(255, 107, 107, 0.5);
+            }
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 12px 35px rgba(255, 107, 107, 0.7);
+            }
+        }
+
+        .next-part-button:active {
+            transform: scale(0.95);
+        }
+
+        /* Notebook lines effect - CORREGIDO */
+        .notebook-sheet::before {
+            content: '';
+            position: absolute;
+            top: 70px;
+            left: 48px;
+            right: 15px;
+            bottom: 100px;
+            background-image: linear-gradient(to bottom, transparent 47px, rgba(200, 200, 200, 0.5) 48px, transparent 49px);
+            background-size: 100% 50px;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Red margin line - CORREGIDO */
+        .notebook-sheet::after {
+            content: '';
+            position: absolute;
+            top: 70px;
+            left: 40px;
+            bottom: 100px;
+            width: 2px;
+            background: #ff6b6b;
+            opacity: 0.6;
+            z-index: 1;
+        }
+
+        /* Animation classes */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        /* RESPONSIVE DESIGN - MÓVIL REALME 9I Y OTROS */
+        @media screen and (max-width: 430px) {
+            .notebook-sheet {
+                padding-left: 25px;
+                padding-right: 20px;
+            }
+
+            .notebook-sheet::after {
+                left: 30px;
+            }
+
+            .notebook-sheet::before {
+                left: 38px;
+                right: 12px;
+            }
+
+            .page-content {
+                margin-left: 15px;
+                text-indent: 15px;
+                padding-left: 20px;
+                font-size: clamp(0.85rem, 3vw, 1rem);
+            }
+
+            .page-title {
+                margin-left: 15px;
+                margin-right: 10px;
+            }
+
+            .highlight-box {
+                margin: 25px 25px 25px 45px;
+                max-width: 280px;
+            }
+
+            .page-image {
+                margin: 25px 25px 25px 45px;
+                max-width: 220px;
+            }
+
+            .spiral-holes {
+                left: 5px;
+            }
+
+            .next-part-button {
+                min-width: 160px;
+                padding: 14px 25px;
+                font-size: 0.95rem;
+            }
+        }
+
+        /* DESKTOP Y TABLET */
+        @media screen and (min-width: 768px) {
+            .notebook-sheet {
+                max-width: 800px;
+                margin: 0 auto;
+                padding: 80px 60px 120px 100px;
+                box-shadow: 0 0 50px rgba(0, 0, 0, 0.1);
+            }
+
+            .page-title {
+                margin: 0 60px 30px 60px;
+                font-size: 2.5rem;
+            }
+
+            .page-image {
+                margin: 30px auto;
+                max-width: 350px;
+            }
+
+            .page-image img {
+                height: 250px;
+            }
+
+            .highlight-box {
+                margin: 30px auto;
+                max-width: 400px;
+                padding: 25px 30px;
+            }
+
+            .page-content {
+                margin: 30px 25px 30px 90px;
+                font-size: 1.1rem;
+                line-height: 1.8;
+                text-indent: 25px;
+                padding-right: 10px;
+            }
+
+            .notebook-sheet::before {
+                left: 90px;
+                right: 50px;
+                top: 120px;
+            }
+
+            .notebook-sheet::after {
+                left: 80px;
+                top: 110px;
+            }
+
+            .spiral-holes {
+                left: 20px;
+                width: 25px;
+                top: 80px;
+                bottom: 40px;
+            }
+
+            .spiral-hole {
+                width: 20px;
+                height: 20px;
+            }
+
+            .next-part-button {
+                min-width: 200px;
+                padding: 18px 35px;
+                font-size: 1.1rem;
+            }
+        }
+
+        /* Safe area handling */
+        @supports(padding: max(0px)) {
+            .page-indicator {
+                top: max(20px, env(safe-area-inset-top));
+            }
+
+            .page-navigation {
+                bottom: max(20px, env(safe-area-inset-bottom));
+            }
+
+            .notebook-sheet {
+                padding-top: max(80px, calc(60px + env(safe-area-inset-top)));
+                padding-bottom: max(120px, calc(100px + env(safe-area-inset-bottom)));
+            }
+        }
+
+        /* High DPI optimization */
+        @media only screen and (-webkit-min-device-pixel-ratio: 2) {
+            .page-image img {
+                image-rendering: -webkit-optimize-contrast;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Floating hearts background -->
+    <div class="floating-hearts" id="floatingHearts"></div>
+
+    <div class="book-container">
+        <div class="book" id="book">
+            <!-- Enhanced Cover -->
+            <div class="cover" id="cover">
+                <h1 class="title-main">Para mi querida Anahí</h1>
+                <p class="subtitle">Un cuaderno lleno de momentos especiales</p>
+
+                <div class="heart" onclick="openBook()">💕</div>
+
+                <div class="author">HECHO POR RUBÉN ✨</div>
+            </div>
+
+            <!-- Page 1: Momentos de Alegría -->
+            <div class="page page1" id="page1">
+                <div class="page-indicator">1 / 12</div>
+                <div class="notebook-sheet">
+                    <div class="spiral-holes">
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                    </div>
+
+                    <h2 class="page-title">Momentos de Alegría</h2>
+
+                    <div class="page-image">
+                        <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=400&h=250&fit=crop&auto=format"
+                            alt="Momento de alegría">
+                    </div>
+
+                    <div class="highlight-box">
+                        <span>😊</span>
+                        <span class="highlight-text">Nuestras risas compartidas</span>
+                        <span>😊</span>
+                    </div>
+
+                    <div class="page-content">
+                        La risa es el lenguaje universal de la felicidad, y contigo he aprendido a hablar este idioma
+                        con fluidez. Cada conversación está llena de esos momentos divertidos que nos hacen olvidar el
+                        mundo exterior y nos sumergen en nuestro propio universo de alegría.
+                    </div>
+                </div>
+
+                <div class="page-navigation">
+                    <button class="nav-button" onclick="previousPage()" disabled>← Anterior</button>
+                    <button class="nav-button" onclick="nextPage()">Siguiente →</button>
+                </div>
+            </div>
+
+            <!-- Page 2: Recuerdos Especiales -->
+            <div class="page page2" id="page2">
+                <div class="page-indicator">2 / 12</div>
+                <div class="notebook-sheet">
+                    <div class="spiral-holes">
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                    </div>
+
+                    <h2 class="page-title">Recuerdos Especiales</h2>
+
+                    <div class="highlight-box">
+                        <span>📸</span>
+                        <span class="highlight-text">Momentos que atesoramos</span>
+                        <span>📸</span>
+                    </div>
+
+                    <div class="page-content">
+                        Cada momento contigo se convierte en un recuerdo precioso que guardo con cariño en mi corazón.
+                        Son esos pequeños detalles, esas conversaciones profundas y esos instantes de complicidad los
+                        que hacen que nuestra amistad sea tan especial y única.
+                    </div>
+                </div>
+
+                <div class="page-navigation">
+                    <button class="nav-button" onclick="previousPage()">← Anterior</button>
+                    <button class="nav-button" onclick="nextPage()">Siguiente →</button>
+                </div>
+            </div>
+
+            <!-- Page 3: Aventuras Juntos -->
+            <div class="page page3" id="page3">
+                <div class="page-indicator">3 / 12</div>
+                <div class="notebook-sheet">
+                    <div class="spiral-holes">
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                    </div>
+
+                    <h2 class="page-title">Aventuras Juntos</h2>
+
+                    <div class="page-image">
+                        <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=400&h=250&fit=crop&auto=format"
+                            alt="Aventuras">
+                    </div>
+
+                    <div class="highlight-box">
+                        <span>🌄</span>
+                        <span class="highlight-text">Explorando el mundo</span>
+                        <span>🌄</span>
+                    </div>
+
+                    <div class="page-content">
+                        Cada aventura que vivimos juntos se convierte en una historia que contar. Desde las más simples
+                        hasta las más emocionantes, todas tienen ese sabor especial que les da nuestra amistad y la
+                        forma única en que compartimos cada experiencia.
+                    </div>
+                </div>
+
+                <div class="page-navigation">
+                    <button class="nav-button" onclick="previousPage()">← Anterior</button>
+                    <button class="nav-button" onclick="nextPage()">Siguiente →</button>
+                </div>
+            </div>
+
+            <!-- Page 4: Apoyo Mutuo -->
+            <div class="page page4" id="page4">
+                <div class="page-indicator">4 / 12</div>
+                <div class="notebook-sheet">
+                    <div class="spiral-holes">
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                    </div>
+
+                    <h2 class="page-title">Apoyo Mutuo</h2>
+
+                    <div class="highlight-box">
+                        <span>🤝</span>
+                        <span class="highlight-text">Siempre ahí el uno para el otro</span>
+                        <span>🤝</span>
+                    </div>
+
+                    <div class="page-content">
+                        En los momentos difíciles y en las alegrías más grandes, siempre hemos estado ahí el uno para el
+                        otro. Tu apoyo incondicional y tus palabras de aliento han sido mi fortaleza en muchas
+                        ocasiones, y espero haber sido igual para ti.
+                    </div>
+                </div>
+
+                <div class="page-navigation">
+                    <button class="nav-button" onclick="previousPage()">← Anterior</button>
+                    <button class="nav-button" onclick="nextPage()">Siguiente →</button>
+                </div>
+            </div>
+
+            <!-- Page 5: Creatividad Compartida -->
+            <div class="page page5" id="page5">
+                <div class="page-indicator">5 / 12</div>
+                <div class="notebook-sheet">
+                    <div class="spiral-holes">
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                    </div>
+
+                    <h2 class="page-title">Creatividad Compartida</h2>
+
+                    <div class="page-image">
+                        <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&h=250&fit=crop&auto=format"
+                            alt="Creatividad">
+                    </div>
+
+                    <div class="highlight-box">
+                        <span>🎨</span>
+                        <span class="highlight-text">Ideas que fluyen</span>
+                        <span>🎨</span>
+                    </div>
+
+                    <div class="page-content">
+                        Nuestra creatividad encuentra en la amistad el mejor lienzo para expresarse. Juntos hemos creado
+                        ideas maravillosas, proyectos únicos y momentos llenos de inspiración que nos han permitido
+                        conocernos aún mejor.
+                    </div>
+                </div>
+
+                <div class="page-navigation">
+                    <button class="nav-button" onclick="previousPage()">← Anterior</button>
+                    <button class="nav-button" onclick="nextPage()">Siguiente →</button>
+                </div>
+            </div>
+
+            <!-- Page 6: Conversaciones Profundas -->
+            <div class="page page6" id="page6">
+                <div class="page-indicator">6 / 12</div>
+                <div class="notebook-sheet">
+                    <div class="spiral-holes">
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                    </div>
+
+                    <h2 class="page-title">Conversaciones Profundas</h2>
+
+                    <div class="highlight-box">
+                        <span>💭</span>
+                        <span class="highlight-text">Conectando almas</span>
+                        <span>💭</span>
+                    </div>
+
+                    <div class="page-content">
+                        Esas conversaciones largas donde el tiempo se detiene y las almas se conectan de una manera
+                        especial. Hablamos de todo y de nada, compartimos nuestros pensamientos más íntimos y
+                        descubrimos nuevas facetas el uno del otro con cada palabra intercambiada.
+                    </div>
+                </div>
+
+                <div class="page-navigation">
+                    <button class="nav-button" onclick="previousPage()">← Anterior</button>
+                    <button class="nav-button" onclick="nextPage()">Siguiente →</button>
+                </div>
+            </div>
+
+            <!-- Page 7: Sueños y Proyectos -->
+            <div class="page page7" id="page7">
+                <div class="page-indicator">7 / 12</div>
+                <div class="notebook-sheet">
+                    <div class="spiral-holes">
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                    </div>
+
+                    <h2 class="page-title">Sueños y Proyectos</h2>
+
+                    <div class="page-image">
+                        <img src="https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=400&h=250&fit=crop&auto=format"
+                            alt="Sueños">
+                    </div>
+
+                    <div class="highlight-box">
+                        <span>🌟</span>
+                        <span class="highlight-text">Construyendo el futuro</span>
+                        <span>🌟</span>
+                    </div>
+
+                    <div class="page-content">
+                        Hablar contigo sobre el futuro es como pintar un lienzo en blanco con los colores más vibrantes
+                        de la esperanza. Tus sueños se han vuelto mis sueños, y mis proyectos encuentran en ti la
+                        inspiración perfecta para convertirse en realidad.
+                    </div>
+                </div>
+
+                <div class="page-navigation">
+                    <button class="nav-button" onclick="previousPage()">← Anterior</button>
+                    <button class="nav-button" onclick="nextPage()">Siguiente →</button>
+                </div>
+            </div>
+
+            <!-- Page 8: Complicidad -->
+            <div class="page page8" id="page8">
+                <div class="page-indicator">8 / 12</div>
+                <div class="notebook-sheet">
+                    <div class="spiral-holes">
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                    </div>
+
+                    <h2 class="page-title">Complicidad</h2>
+
+                    <div class="highlight-box">
+                        <span>😉</span>
+                        <span class="highlight-text">Esa conexión especial</span>
+                        <span>😉</span>
+                    </div>
+
+                    <div class="page-content">
+                        Esa mirada cómplice que no necesita palabras, esos gestos que solo nosotros entendemos y esa
+                        forma única de comunicarnos que trasciende las barreras del lenguaje convencional. Nuestra
+                        complicidad es uno de los tesoros más preciados de nuestra amistad.
+                    </div>
+                </div>
+
+                <div class="page-navigation">
+                    <button class="nav-button" onclick="previousPage()">← Anterior</button>
+                    <button class="nav-button" onclick="nextPage()">Siguiente →</button>
+                </div>
+            </div>
+
+            <!-- Page 9: Crecimiento Personal -->
+            <div class="page page9" id="page9">
+                <div class="page-indicator">9 / 12</div>
+                <div class="notebook-sheet">
+                    <div class="spiral-holes">
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                    </div>
+
+                    <h2 class="page-title">Crecimiento Personal</h2>
+
+                    <div class="page-image">
+                        <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&h=250&fit=crop&auto=format"
+                            alt="Crecimiento">
+                    </div>
+
+                    <div class="highlight-box">
+                        <span>🌱</span>
+                        <span class="highlight-text">Creciendo juntos</span>
+                        <span>🌱</span>
+                    </div>
+
+                    <div class="page-content">
+                        Juntos hemos crecido como personas, aprendiendo el uno del otro y descubriendo nuevas facetas de
+                        nosotros mismos. Tu influencia positiva ha sido fundamental en mi desarrollo personal, y espero
+                        haber contribuido de alguna manera al tuyo también.
+                    </div>
+                </div>
+
+                <div class="page-navigation">
+                    <button class="nav-button" onclick="previousPage()">← Anterior</button>
+                    <button class="nav-button" onclick="nextPage()">Siguiente →</button>
+                </div>
+            </div>
+
+            <!-- Page 10: Gratitud -->
+            <div class="page page10" id="page10">
+                <div class="page-indicator">10 / 12</div>
+                <div class="notebook-sheet">
+                    <div class="spiral-holes">
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                    </div>
+
+                    <h2 class="page-title">Gratitud</h2>
+
+                    <div class="highlight-box">
+                        <span>🙏</span>
+                        <span class="highlight-text">Infinitamente agradecido</span>
+                        <span>🙏</span>
+                    </div>
+
+                    <div class="page-content">
+                        No hay palabras suficientes para expresar lo agradecido que estoy por tenerte en mi vida. Tu
+                        amistad ha sido un regalo invaluable que atesoro cada día. Gracias por ser esa persona especial
+                        que ilumina mis días y hace que todo sea mejor.
+                    </div>
+                </div>
+
+                <div class="page-navigation">
+                    <button class="nav-button" onclick="previousPage()">← Anterior</button>
+                    <button class="nav-button" onclick="nextPage()">Siguiente →</button>
+                </div>
+            </div>
+
+            <!-- Page 11: Momentos Únicos -->
+            <div class="page page11" id="page11">
+                <div class="page-indicator">11 / 12</div>
+                <div class="notebook-sheet">
+                    <div class="spiral-holes">
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                    </div>
+
+                    <h2 class="page-title">Momentos Únicos</h2>
+
+                    <div class="page-image">
+                        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=250&fit=crop&auto=format"
+                            alt="Momentos únicos">
+                    </div>
+
+                    <div class="highlight-box">
+                        <span>✨</span>
+                        <span class="highlight-text">Irrepetibles y especiales</span>
+                        <span>✨</span>
+                    </div>
+
+                    <div class="page-content">
+                        Cada momento contigo es único e irrepetible. Son esos instantes mágicos que quedan grabados en
+                        el corazón para siempre, momentos que nos definen y que hacen que nuestra historia juntos sea
+                        tan especial y significativa.
+                    </div>
+                </div>
+
+                <div class="page-navigation">
+                    <button class="nav-button" onclick="previousPage()">← Anterior</button>
+                    <button class="nav-button" onclick="nextPage()">Siguiente →</button>
+                </div>
+            </div>
+
+            <!-- Page 12: Mensaje del Corazón - CON BOTÓN SIGUIENTE PARTE -->
+            <div class="page page12" id="page12">
+                <div class="page-indicator">12 / 12</div>
+                <div class="notebook-sheet">
+                    <div class="spiral-holes">
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                        <div class="spiral-hole"></div>
+                    </div>
+
+                    <h2 class="page-title">Mensaje del Corazón</h2>
+
+                    <div class="page-image">
+                        <img src="https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=400&h=250&fit=crop&auto=format"
+                            alt="Corazón">
+                    </div>
+
+                    <div class="highlight-box">
+                        <span>❤️</span>
+                        <span class="highlight-text">Para ti, con todo mi cariño</span>
+                        <span>❤️</span>
+                    </div>
+
+                    <div class="page-content">
+                        Este cuaderno es apenas una pequeña ventana hacia todo lo que siento por ti. Cada página
+                        representa un pedacito de mi corazón que quiero compartir contigo en este hermoso mes de
+                        septiembre que inicia. Eres una persona extraordinaria, y espero que siempre recuerdes lo
+                        especial que eres y lo mucho que significas para mí. Que este nuevo mes esté lleno de
+                        bendiciones, sonrisas, logros y momentos hermosos que se conviertan en los recuerdos del mañana.
+                        Con todo mi amor y los mejores deseos para este septiembre que será, sin duda, inolvidable.
+                    </div>
+                </div>
+
+                <!-- NAVEGACIÓN ESPECIAL PARA PÁGINA 12 -->
+                <div class="page-navigation">
+                    <button class="nav-button" onclick="previousPage()">← Anterior</button>
+                    <button class="next-part-button" onclick="goToNextPart()">Siguiente Parte</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentPage = 0;
+        let isBookOpened = false;
+        const totalPages = 12;
+
+        // Create floating hearts animation
+        function createFloatingHearts() {
+            const heartsContainer = document.getElementById('floatingHearts');
+            const heartSymbols = ['💕', '💖', '💗', '💓', '💝', '🌸', '✨'];
+
+            setInterval(() => {
+                if (Math.random() < 0.3) {
+                    const heart = document.createElement('div');
+                    heart.className = 'heart-particle';
+                    heart.textContent = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
+                    heart.style.left = Math.random() * 100 + '%';
+                    heart.style.fontSize = (Math.random() * 1 + 0.5) + 'rem';
+                    heart.style.animationDuration = (Math.random() * 5 + 10) + 's';
+                    heart.style.animationDelay = Math.random() * 2 + 's';
+
+                    heartsContainer.appendChild(heart);
+
+                    setTimeout(() => {
+                        heart.remove();
+                    }, 15000);
+                }
+            }, 2000);
+        }
+
+        // Create spiral holes dynamically based on content height
+        function createSpiralHoles() {
+            const allPages = document.querySelectorAll('.page');
+
+            allPages.forEach(page => {
+                const spiralContainer = page.querySelector('.spiral-holes');
+                const notebookSheet = page.querySelector('.notebook-sheet');
+
+                if (spiralContainer && notebookSheet) {
+                    // Clear existing holes
+                    spiralContainer.innerHTML = '';
+
+                    // Calculate how many holes we need based on content height
+                    const containerHeight = spiralContainer.offsetHeight;
+                    const holeSpacing = 56; // 16px hole + 40px margin
+                    const numHoles = Math.floor(containerHeight / holeSpacing) + 2;
+
+                    // Create the holes
+                    for (let i = 0; i < numHoles; i++) {
+                        const hole = document.createElement('div');
+                        hole.className = 'spiral-hole';
+                        hole.style.top = (i * holeSpacing) + 'px';
+                        spiralContainer.appendChild(hole);
+                    }
+                }
+            });
+        }
+
+        function openBook() {
+            if (!isBookOpened) {
+                const book = document.getElementById('book');
+                const cover = document.getElementById('cover');
+
+                book.classList.add('opening');
+
+                setTimeout(() => {
+                    book.classList.add('opened');
+                    cover.style.display = 'none';
+                    showPage(1);
+                    isBookOpened = true;
+                }, 1200);
+            }
+        }
+
+        function showPage(pageNum) {
+            // Hide all pages
+            for (let i = 1; i <= totalPages; i++) {
+                const page = document.getElementById('page' + i);
+                if (page) {
+                    page.classList.remove('active');
+                }
+            }
+
+            // Show current page with animation
+            const currentPageEl = document.getElementById('page' + pageNum);
+            if (currentPageEl) {
+                currentPageEl.classList.add('active', 'fade-in');
+
+                // Recreate spiral holes after page is shown
+                setTimeout(() => {
+                    createSpiralHoles();
+                    currentPageEl.classList.remove('fade-in');
+                }, 100);
+            }
+
+            currentPage = pageNum;
+            updateNavigation();
+        }
+
+        function nextPage() {
+            if (currentPage < totalPages) {
+                showPage(currentPage + 1);
+            }
+        }
+
+        function previousPage() {
+            if (currentPage > 1) {
+                showPage(currentPage - 1);
+            }
+        }
+
+        function updateNavigation() {
+            const prevButtons = document.querySelectorAll('.nav-button:first-child');
+            const nextButtons = document.querySelectorAll('.nav-button:last-child');
+
+            prevButtons.forEach(btn => {
+                btn.disabled = currentPage <= 1;
+            });
+
+            // Solo deshabilitar botón "Siguiente" en páginas que no sean la 12
+            if (currentPage !== 12) {
+                nextButtons.forEach(btn => {
+                    btn.disabled = currentPage >= totalPages;
+                });
+            }
+        }
+
+        // NUEVA FUNCIÓN: IR A SIGUIENTE PARTE
+        function goToNextPart() {
+            // Efecto de transición suave
+            document.body.style.transition = 'opacity 0.5s ease-out';
+            document.body.style.opacity = '0';
+            
+            setTimeout(() => {
+                window.location.href = '../Parte2/Cumpleaños.html';
+            }, 500);
+        }
+
+        // Touch gestures for mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        document.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+
+        document.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleGesture();
+        });
+
+        function handleGesture() {
+            if (!isBookOpened) return;
+
+            const swipeThreshold = 50;
+            const diff = touchStartX - touchEndX;
+
+            if (Math.abs(diff) > swipeThreshold) {
+                if (diff > 0) {
+                    // Swipe left - next page
+                    nextPage();
+                } else {
+                    // Swipe right - previous page
+                    previousPage();
+                }
+            }
+        }
+
+        // Prevent zoom on double tap
+        let lastTouchEnd = 0;
+        document.addEventListener('touchend', (e) => {
+            const now = new Date().getTime();
+            if (now - lastTouchEnd <= 300) {
+                e.preventDefault();
+            }
+            lastTouchEnd = now;
+        }, false);
+
+        // Handle window resize to recreate holes
+        window.addEventListener('resize', () => {
+            if (isBookOpened) {
+                setTimeout(createSpiralHoles, 100);
+            }
+        });
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            createFloatingHearts();
+            updateNavigation();
+            createSpiralHoles();
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (!isBookOpened) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    openBook();
+                }
+                return;
+            }
+
+            if (e.key === 'ArrowLeft') {
+                previousPage();
+            } else if (e.key === 'ArrowRight') {
+                nextPage();
+            }
+        });
+    </script>
+</body>
+
+</html>
