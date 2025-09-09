@@ -380,11 +380,12 @@
             border-radius: 2px;
         }
 
-        /* IMAGEN - ALINEADA CON HIGHLIGHT-BOX */
+        /* IMAGEN - ALINEACIÓN CORREGIDA PARA TODOS LOS DISPOSITIVOS */
         .page-image {
             width: 100%;
             max-width: 250px;
-            margin: 25px 30px 25px 55px;
+            /* Cambios principales para la alineación */
+            margin: 25px 0 25px 50px; /* Ajustado para alinear con highlight-box */
             border-radius: 20px;
             overflow: hidden;
             box-shadow:
@@ -407,7 +408,7 @@
             background: linear-gradient(135deg, #ffe0e6 0%, #ffd3e1 100%);
             padding: 18px 20px;
             border-radius: 25px;
-            margin: 25px 30px 25px 55px;
+            margin: 25px 0 25px 50px; /* Mismo margen que la imagen */
             text-align: center;
             box-shadow:
                 0 6px 15px rgba(255, 107, 107, 0.2),
@@ -574,7 +575,7 @@
             animation: fadeIn 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
-        /* RESPONSIVE DESIGN - MÓVIL REALME 9I Y OTROS */
+        /* RESPONSIVE DESIGN - MÓVIL REALME 9I Y OTROS (hasta 430px) */
         @media screen and (max-width: 430px) {
             .notebook-sheet {
                 padding-left: 25px;
@@ -602,13 +603,14 @@
                 margin-right: 10px;
             }
 
+            /* Alineación centrada para Realme 9I */
             .highlight-box {
-                margin: 25px 25px 25px 45px;
+                margin: 25px auto; /* Centrada */
                 max-width: 280px;
             }
 
             .page-image {
-                margin: 25px 25px 25px 45px;
+                margin: 25px auto; /* Centrada igual que highlight-box */
                 max-width: 220px;
             }
 
@@ -623,7 +625,69 @@
             }
         }
 
-        /* DESKTOP Y TABLET */
+        /* MÓVILES PEQUEÑOS (hasta 375px) */
+        @media screen and (max-width: 375px) {
+            .highlight-box {
+                margin: 25px auto; /* Centrada */
+                max-width: 260px;
+                padding: 16px 18px;
+            }
+
+            .page-image {
+                margin: 25px auto; /* Centrada */
+                max-width: 200px;
+            }
+
+            .page-image img {
+                height: 180px;
+            }
+        }
+
+        /* MÓVILES MÁS GRANDES (431px a 576px) */
+        @media screen and (min-width: 431px) and (max-width: 576px) {
+            .highlight-box {
+                margin: 25px auto; /* Centrada */
+                max-width: 340px;
+            }
+
+            .page-image {
+                margin: 25px auto; /* Centrada */
+                max-width: 270px;
+            }
+
+            .page-image img {
+                height: 220px;
+            }
+        }
+
+        /* TABLET (577px a 767px) */
+        @media screen and (min-width: 577px) and (max-width: 767px) {
+            .notebook-sheet {
+                padding: 80px 40px 120px 60px;
+            }
+
+            .highlight-box {
+                margin: 30px auto;
+                max-width: 380px;
+                padding: 22px 28px;
+            }
+
+            .page-image {
+                margin: 30px auto;
+                max-width: 320px;
+            }
+
+            .page-image img {
+                height: 240px;
+            }
+
+            .page-content {
+                margin: 30px 20px 30px 60px;
+                font-size: 1.05rem;
+            }
+        }
+
+        /* DESKTOP Y TABLET GRANDES (768px+) */
         @media screen and (min-width: 768px) {
             .notebook-sheet {
                 max-width: 800px;
@@ -1168,7 +1232,7 @@
                 </div>
             </div>
 
-            <!-- Page 12: Mensaje del Corazón - CON BOTÓN SIGUIENTE PARTE -->
+            <!-- Page 12: Mensaje del Corazón -->
             <div class="page page12" id="page12">
                 <div class="page-indicator">12 / 12</div>
                 <div class="notebook-sheet">
